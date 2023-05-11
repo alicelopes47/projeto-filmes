@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import * as S from './Header_Style'
 import logo from './../imgs/logo.png'
+import avatar from './../imgs/avatar2.png'
+import searchIcon from './../imgs/searchicon.svg'
+import axios from 'axios';
+import star from './../imgs/star.png'
 
 const Header = () => {
-  return (
+    const [movie, setMovie] = useState([]);
+  
+    useEffect(() => {
+        async function fetchMovie() {
+            const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=9289fd1e97ccfafa4714dd0281dff393&language=pt-Br&page=1');
+            const movie = response.data.results.find(movie => movie.id === 76600);
+            setMovie(movie);
+        }
+  
+        fetchMovie();
+    }, []);
+  
+    return (
     <>
         <S.NavDivHeader>
             <div>
@@ -20,12 +36,36 @@ const Header = () => {
             <div>
                 <nav>
                     <S.HeaderRightList>
+                        <img src={searchIcon} alt='search icon' />
                         <li>Login</li>
                         <li>Filtro</li>
                     </S.HeaderRightList>
                 </nav>
             </div>
         </S.NavDivHeader>
+
+        <S.mainContentHeader style={{
+             backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1)0%, rgba(0, 0, 0, 0)30%), 
+             url(${avatar})`,
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+        }}>
+            <S.divInfo>
+               <h1>{movie.title}</h1>
+               <p>3hr 23min | Fantasia, Família | 2023</p>
+               <S.IMDcontainer>
+                <img src={star} alt='' />
+                <S.IMDPAcontainer>{movie.vote_average}</S.IMDPAcontainer>
+                <S.IMDPcontainer>/10</S.IMDPcontainer>
+               </S.IMDcontainer>
+               <S.overviewcontainer>{movie.overview}</S.overviewcontainer>
+               <S.buttonsContaier>
+               <S.button>Assistir agora</S.button>
+               <S.button>Trailer</S.button>
+               </S.buttonsContaier>
+            </S.divInfo>
+        </S.mainContentHeader>
     </>
   )
 }
