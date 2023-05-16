@@ -70,8 +70,8 @@ font-size: 1em;
 
 export const divInfo = styled.div `
 width: 40%;
-padding-left: 4em;
-padding-bottom: 4em;
+margin-left: 2em;
+margin-bottom: 2em;
 `
 
 export const overviewcontainer = styled.p `
