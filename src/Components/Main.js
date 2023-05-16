@@ -4,7 +4,7 @@ import axios from 'axios';
 import searchIcon from './../imgs/searchicon.svg'
 import { Carousel } from 'react-responsive-carousel';
 
-export default function Main () {
+export default function Main ({search, setSearch}) {
     const [movies, setMovies] = useState([]);
   
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function Main () {
     }, []);
   
     return (
-      <S.Main>
+      <S.Main onClick={() => (setSearch(search = false))}>
         <div>
           <S.MainNav>
             <li>Popular</li>

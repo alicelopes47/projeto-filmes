@@ -14,6 +14,7 @@ position: fixed;
 top: 0;
 backdrop-filter: blur(5px);
 color: white;
+z-index: 999999;
 font-family: 'Open Sans', sans-serif;
 `
 
@@ -99,4 +100,13 @@ export const button = styled.button `
         background-color: #D53A00;
         border: solid #D53A00;
     }
+`
+
+export const input = styled.input `
+width: 6em;
+transition: 0.2s;
+`
+
+export const imgsearch = styled.img `
+cursor: pointer;
 `

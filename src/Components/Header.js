@@ -6,9 +6,9 @@ import searchIcon from './../imgs/searchicon.svg'
 import axios from 'axios';
 import star from './../imgs/star.png'
 
-const Header = () => {
+const Header = ({search, setSearch}) => {
     const [movie, setMovie] = useState([]);
-  
+    
     useEffect(() => {
         async function fetchMovie() {
             const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=9289fd1e97ccfafa4714dd0281dff393&language=pt-Br&page=1');
@@ -36,7 +36,7 @@ const Header = () => {
             <div>
                 <nav>
                     <S.HeaderRightList>
-                        <img src={searchIcon} alt='search icon' />
+                    {(search === true ? (<S.input type='text'/>) : (<S.imgsearch src={searchIcon} alt='search icon' onClick={() => (setSearch(!search))} />))}
                         <li>Login</li>
                         <li>Filtro</li>
                     </S.HeaderRightList>
@@ -44,7 +44,7 @@ const Header = () => {
             </div>
         </S.NavDivHeader>
 
-        <S.mainContentHeader style={{
+        <S.mainContentHeader onClick={() => (setSearch(search = false))} style={{
              backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 1)0%, rgba(0, 0, 0, 0)30%), 
              url(${avatar})`,
             backgroundPosition: 'center center',
