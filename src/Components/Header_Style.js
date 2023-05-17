@@ -16,6 +16,7 @@ backdrop-filter: blur(5px);
 color: white;
 z-index: 999999;
 font-family: 'Open Sans', sans-serif;
+cursor: pointer;
 `
 
 export const HeaderList = styled.div `
@@ -71,7 +72,7 @@ font-size: 1em;
 
 export const divInfo = styled.div `
 width: 40%;
-margin-left: 2em;
+margin-left: 4em;
 margin-bottom: 2em;
 `
 
@@ -96,6 +97,7 @@ export const button = styled.button `
     color: white;
     box-shadow: none;
     border: solid #717171;
+    cursor: pointer;
     &:hover { 
         background-color: #D53A00;
         border: solid #D53A00;
